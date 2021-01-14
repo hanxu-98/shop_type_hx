@@ -10,4 +10,6 @@ public interface AttrService {
     ResultData saveAttr(Attr attr);
 
     ResultData updateAttr(Attr attr);
+
+    ResultData echoAttr(Integer id);
 }

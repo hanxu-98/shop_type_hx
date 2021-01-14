@@ -32,4 +32,8 @@
         isSKU=#{isSKU},createDate=#{createDate},updateDate=#{updateDate},author=#{author}
          where id=#{id}
     </update>
+
+    <select id="echoAttr" parameterType="java.lang.Integer" resultType="com.fh.model.po.Attr">
+        select  * from  shop_attr where id=#{id}
+    </select>
 </mapper>

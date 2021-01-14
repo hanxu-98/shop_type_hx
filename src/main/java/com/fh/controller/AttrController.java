@@ -4,10 +4,7 @@ import com.fh.model.po.Attr;
 import com.fh.model.vo.AttrPageBean;
 import com.fh.service.impl.AttrService;
 import com.fh.utils.ResultData;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -90,5 +87,19 @@ public class AttrController {
     @PostMapping("updateAttr")
     public ResultData updateAttr(Attr attr){
         return attrService.updateAttr(attr);
+    }
+    /*
+    * 根据id 查找数据
+    * url: http://localhost:8080/api/attr/echoAttr
+    * 请求方式   get
+    * 参数: id    主键  number
+
+        返回值 "code": 200, 成功状态码
+             "message": "success", 提示
+              "data": {} 返回的指定ID的数据
+    * */
+    @GetMapping("echoAttr")
+    public  ResultData echoAttr(Integer id){
+        return attrService.echoAttr(id);
     }
 }

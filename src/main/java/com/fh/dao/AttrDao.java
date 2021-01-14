@@ -13,4 +13,6 @@ public interface AttrDao {
     Integer saveAttr(Attr attr);
 
     void updateAttr(Attr attr);
+
+    Attr echoAttr(Integer id);
 }
