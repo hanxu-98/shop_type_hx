@@ -9,4 +9,8 @@ public interface AttrDao {
     List<Attr> queryAttrData(AttrPageBean pa);
 
     Long queryAttrCount(AttrPageBean pa);
+
+    Integer saveAttr(Attr attr);
+
+    void updateAttr(Attr attr);
 }

@@ -8,6 +8,7 @@ import com.fh.utils.ResultData;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -24,5 +25,25 @@ public class AttrServiceImpl implements AttrService{
         p.setData(li);
         p.setTotalPage(count);
         return ResultData.success(p);
+    }
+
+    @Override
+    public ResultData saveAttr(Attr attr) {
+
+            attr.setCreateDate(new Date());
+            attr.setUpdateDate(new Date());
+            Integer id=attrDao.saveAttr(attr);
+
+
+        return ResultData.success(id);
+    }
+
+    @Override
+    public ResultData updateAttr(Attr attr) {
+
+        attr.setUpdateDate(new Date());
+        attrDao.updateAttr(attr);
+
+        return ResultData.success(null);
     }
 }

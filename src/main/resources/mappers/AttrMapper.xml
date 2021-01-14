@@ -21,4 +21,15 @@
         select count(1) from shop_attr
         <include refid="sqlId"></include>
     </select>
+
+    <insert id="saveAttr" parameterType="com.fh.model.po.Attr" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into shop_attr (name,nameCH,typeId,type,isSKU,isDel,createDate,updateDate,author)
+        values (#{name},#{nameCH},#{typeId},#{type},#{isSKU},#{isDel},#{createDate},#{updateDate},#{author})
+    </insert>
+
+    <update id="updateAttr" parameterType="com.fh.model.po.Attr">
+        update shop_attr set name=#{name} ,nameCH=#{nameCH},typeId=#{typeId},type=#{type},
+        isSKU=#{isSKU},createDate=#{createDate},updateDate=#{updateDate},author=#{author}
+         where id=#{id}
+    </update>
 </mapper>
