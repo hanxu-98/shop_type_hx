@@ -36,4 +36,8 @@
     <select id="echoAttr" parameterType="java.lang.Integer" resultType="com.fh.model.po.Attr">
         select  * from  shop_attr where id=#{id}
     </select>
+
+    <delete id="delAttr" parameterType="java.lang.Integer">
+        delete from shop_attr where id=#{id}
+    </delete>
 </mapper>

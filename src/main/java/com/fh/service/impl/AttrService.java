@@ -12,4 +12,6 @@ public interface AttrService {
     ResultData updateAttr(Attr attr);
 
     ResultData echoAttr(Integer id);
+
+    ResultData delAttr(Integer id);
 }

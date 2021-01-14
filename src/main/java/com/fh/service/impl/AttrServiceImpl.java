@@ -52,4 +52,10 @@ public class AttrServiceImpl implements AttrService{
         Attr attr=attrDao.echoAttr(id);
         return ResultData.success(attr);
     }
+
+    @Override
+    public ResultData delAttr(Integer id) {
+        attrDao.delAttr(id);
+        return ResultData.success(null);
+    }
 }

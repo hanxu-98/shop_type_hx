@@ -102,4 +102,19 @@ public class AttrController {
     public  ResultData echoAttr(Integer id){
         return attrService.echoAttr(id);
     }
+
+    /*
+    * 根据id 删除数据
+    * url: http://localhost:8080/api/attr/delAttr
+    * 请求方式   delete
+    * 参数: id    主键  number
+
+        返回值 "code": 200, 成功状态码
+             "message": "success", 提示
+              "data": {} 无
+    * */
+    @DeleteMapping("delAttr")
+    public  ResultData delAttr(Integer id){
+        return attrService.delAttr(id);
+    }
 }

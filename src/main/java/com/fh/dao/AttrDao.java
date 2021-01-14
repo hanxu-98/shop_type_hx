@@ -15,4 +15,6 @@ public interface AttrDao {
     void updateAttr(Attr attr);
 
     Attr echoAttr(Integer id);
+
+    void delAttr(Integer id);
 }
