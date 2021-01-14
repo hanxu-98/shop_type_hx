@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.dao.BandDao">
+    <select id="queryBandData" parameterType="com.fh.model.vo.BandPageBean" resultType="com.fh.model.po.Band">
+        select * from shop_band where isdel=0
+         <if test="name !=null and name !=''">
+            and name=#{name}
+        </if>
+         order by ord asc limit #{startIndex},#{pageSize}
+    </select>
+    <select id="queryBandCount" parameterType="com.fh.model.vo.BandPageBean" resultType="java.lang.Long">
+        select  count(1) from shop_band where isdel=0
+        <if test="name !=null and name !=''">
+            and name=#{name}
+        </if>
+    </select>
+
+
+    <insert id="saveBand" parameterType="com.fh.model.po.Band">
+        insert into shop_band (name,bandE,imgpath,bandDesc,ord,isdel,createDate,updateDate,author)
+        values (#{name},#{bandE},#{imgpath},#{bandDesc},#{ord},#{isdel},#{createDate},#{updateDate},#{author})
+    </insert>
+
+    <update id="updateBand" parameterType="com.fh.model.po.Band">
+        update shop_band set name=#{name} ,bandE=#{bandE},imgpath=#{imgpath},bandDesc=#{bandDesc},
+        ord=#{ord},createDate=#{createDate},updateDate=#{updateDate},author=#{author}
+         where id=#{id}
+    </update>
+
+    <update id="delBand" parameterType="java.lang.Integer">
+        update shop_band set isdel=1 where id=#{id}
+    </update>
+</mapper>
