@@ -62,13 +62,20 @@ public class AttrServiceImpl implements AttrService{
     }
 
     @Override
-    public ResultData queryAttrValue(Attr_ValuePageBean pa) {
-        pa.compute();
-        List<Attr_Value> li=attrDao.queryAttrValueData(pa);
-        Long count=attrDao.queryAttrValueCount(pa);
-        PageData p=new PageData();
-        p.setData(li);
-        p.setTotalPage(count);
-        return ResultData.success(p);
+    public ResultData queryAttrValue(Integer attrId) {
+        List<Attr_Value> li=attrDao.queryAttrValueData(attrId);
+        return ResultData.success(li);
+    }
+
+    @Override
+    public ResultData saveAttrValue(Attr_Value va) {
+        if (va.getId()!=null){
+            attrDao.updateAttrValue(va);
+        }else {
+            attrDao.saveAttrValue(va);
+        }
+
+
+        return ResultData.success(null);
     }
 }

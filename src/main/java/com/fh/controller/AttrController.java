@@ -1,6 +1,7 @@
 package com.fh.controller;
 
 import com.fh.model.po.Attr;
+import com.fh.model.po.Attr_Value;
 import com.fh.model.vo.AttrPageBean;
 import com.fh.model.vo.Attr_ValuePageBean;
 import com.fh.service.impl.AttrService;
@@ -19,10 +20,14 @@ public class AttrController {
     /*属性值维护=================================================================*/
     /*http://localhost:8080/api/attr/queryAttrValue*/
     @PostMapping("queryAttrValue")
-    public ResultData queryAttrValue(Attr_ValuePageBean pa){
-        return attrService.queryAttrValue(pa);
+    public ResultData queryAttrValue(Integer attrId){
+        return attrService.queryAttrValue(attrId);
     }
 
+    @PostMapping("saveAttrValue")
+    public ResultData saveAttrValue(Attr_Value va){
+        return attrService.saveAttrValue(va);
+    }
 
 
     /*属性===================================================================*/

@@ -20,7 +20,9 @@ public interface AttrDao {
 
     void delAttr(Integer id);
 
-    List<Attr_Value> queryAttrValueData(Attr_ValuePageBean pa);
+    List<Attr_Value> queryAttrValueData(Integer attrId);
 
-    Long queryAttrValueCount(Attr_ValuePageBean pa);
+    void saveAttrValue(Attr_Value va);
+
+    void updateAttrValue(Attr_Value va);
 }
