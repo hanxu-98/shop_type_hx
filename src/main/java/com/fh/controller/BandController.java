@@ -3,14 +3,15 @@ package com.fh.controller;
 import com.fh.model.po.Band;
 import com.fh.model.vo.BandPageBean;
 import com.fh.service.BandService;
+import com.fh.utils.Upload_OSS;
 import com.fh.utils.ResultData;
-import com.fh.utils.UpLoadDown;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Map;
 
 @RestController
@@ -39,8 +40,11 @@ public class BandController {
 
     }
     @PostMapping("upload")
-    public Map upload(MultipartFile image){
-        Map<String, Object> map = UpLoadDown.upload(image, request, "images");
+    public Map upload(MultipartFile image) throws IOException {
+        //Map<String, Object> map = UpLoadDown.upload(image, request, "images");
+
+        Map<String, Object> map = Upload_OSS.uploadFile(image, "images");
+
         return map;
     }
 
