@@ -4,6 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.fh.dao.AttrDao">
+    <sql id="valueSql">
+            <if test="name !=null and name !=''">
+                name like concat  ('%',#{name},'%')
+            </if>
+    </sql>
+
+    <select id="queryAttrValueData" parameterType="com.fh.model.vo.Attr_ValuePageBean" resultType="com.fh.model.po.Attr_Value">
+        select * from  attr_value
+        where attrId=#{attrId}
+         limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="queryAttrValueCount" parameterType="com.fh.model.vo.Attr_ValuePageBean" resultType="java.lang.Long">
+        select count(1) from attr_value
+    </select>
+
     <sql id="sqlId">
         <where>
             <if test="name !=null and name !=''">

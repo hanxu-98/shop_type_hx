@@ -2,6 +2,7 @@ package com.fh.service.impl;
 
 import com.fh.model.po.Attr;
 import com.fh.model.vo.AttrPageBean;
+import com.fh.model.vo.Attr_ValuePageBean;
 import com.fh.utils.ResultData;
 
 public interface AttrService {
@@ -14,4 +15,6 @@ public interface AttrService {
     ResultData echoAttr(Integer id);
 
     ResultData delAttr(Integer id);
+
+    ResultData queryAttrValue(Attr_ValuePageBean pa);
 }

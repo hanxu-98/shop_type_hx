@@ -2,7 +2,9 @@ package com.fh.service.impl;
 
 import com.fh.dao.AttrDao;
 import com.fh.model.po.Attr;
+import com.fh.model.po.Attr_Value;
 import com.fh.model.vo.AttrPageBean;
+import com.fh.model.vo.Attr_ValuePageBean;
 import com.fh.model.vo.PageData;
 import com.fh.utils.ResultData;
 import org.springframework.stereotype.Service;
@@ -57,5 +59,16 @@ public class AttrServiceImpl implements AttrService{
     public ResultData delAttr(Integer id) {
         attrDao.delAttr(id);
         return ResultData.success(null);
+    }
+
+    @Override
+    public ResultData queryAttrValue(Attr_ValuePageBean pa) {
+        pa.compute();
+        List<Attr_Value> li=attrDao.queryAttrValueData(pa);
+        Long count=attrDao.queryAttrValueCount(pa);
+        PageData p=new PageData();
+        p.setData(li);
+        p.setTotalPage(count);
+        return ResultData.success(p);
     }
 }

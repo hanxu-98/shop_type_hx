@@ -1,7 +1,9 @@
 package com.fh.dao;
 
 import com.fh.model.po.Attr;
+import com.fh.model.po.Attr_Value;
 import com.fh.model.vo.AttrPageBean;
+import com.fh.model.vo.Attr_ValuePageBean;
 
 import java.util.List;
 
@@ -17,4 +19,8 @@ public interface AttrDao {
     Attr echoAttr(Integer id);
 
     void delAttr(Integer id);
+
+    List<Attr_Value> queryAttrValueData(Attr_ValuePageBean pa);
+
+    Long queryAttrValueCount(Attr_ValuePageBean pa);
 }
