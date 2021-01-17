@@ -20,4 +20,8 @@ public interface AttrService {
     ResultData queryAttrValue(Integer attrId);
 
     ResultData saveAttrValue(Attr_Value va);
+
+    ResultData echoAttrValue(Integer id);
+
+    ResultData delAttrValue(Integer id);
 }

@@ -29,6 +29,15 @@ public class AttrController {
         return attrService.saveAttrValue(va);
     }
 
+    @GetMapping("echoAttrValue")
+    public ResultData echoAttrValue(Integer id){
+     return attrService.echoAttrValue(id);
+
+    }
+    @DeleteMapping("delAttrValue")
+    public  ResultData delAttrValue(Integer id){
+        return attrService.delAttrValue(id);
+    }
 
     /*属性===================================================================*/
 

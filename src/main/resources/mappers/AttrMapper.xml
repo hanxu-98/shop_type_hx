@@ -5,6 +5,14 @@
 
 <mapper namespace="com.fh.dao.AttrDao">
 
+    <update id="delAttrValue" parameterType="java.lang.Integer" >
+        update attr_value set isDel=1 where id=#{id}
+    </update>
+
+    <select id="echoAttrValue" parameterType="java.lang.Integer" resultType="com.fh.model.po.Attr_Value">
+        select * from attr_value  where id=#{id};
+    </select>
+
     <insert id="saveAttrValue" parameterType="com.fh.model.po.Attr_Value">
         insert into attr_value (name,nameCH,attrId,isDel) values (#{name},#{nameCH},#{attrId},0)
     </insert>

@@ -78,4 +78,16 @@ public class AttrServiceImpl implements AttrService{
 
         return ResultData.success(null);
     }
+
+    @Override
+    public ResultData echoAttrValue(Integer id) {
+        Attr_Value va=attrDao.echoAttrValue(id);
+        return ResultData.success(va);
+    }
+
+    @Override
+    public ResultData delAttrValue(Integer id) {
+        attrDao.delAttrValue(id);
+        return ResultData.success(null);
+    }
 }

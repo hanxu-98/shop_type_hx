@@ -25,4 +25,8 @@ public interface AttrDao {
     void saveAttrValue(Attr_Value va);
 
     void updateAttrValue(Attr_Value va);
+
+    Attr_Value echoAttrValue(Integer id);
+
+    void delAttrValue(Integer id);
 }
