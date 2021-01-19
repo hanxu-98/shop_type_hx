@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.fh.dao.BandDao">
+    <select id="queryBandAll" resultType="com.fh.model.po.Band">
+        select * from shop_band where isdel=0
+    </select>
+
     <select id="queryBandData" parameterType="com.fh.model.vo.BandPageBean" resultType="com.fh.model.po.Band">
         select * from shop_band where isdel=0
          <if test="name !=null and name !=''">

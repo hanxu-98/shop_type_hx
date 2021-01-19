@@ -10,4 +10,6 @@ public interface BandService {
     ResultData saveBand(Band band);
 
     ResultData delBand(Integer id);
+
+    ResultData queryBandAll();
 }

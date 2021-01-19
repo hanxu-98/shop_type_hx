@@ -8,6 +8,17 @@ public class Attr_Value {
     private int isDel;
     private Integer attrId;
 
+    private String attrName;
+
+
+    public String getAttrName() {
+        return attrName;
+    }
+
+    public void setAttrName(String attrName) {
+        this.attrName = attrName;
+    }
+
     public int getIsDel() {
         return isDel;
     }

@@ -30,6 +30,12 @@ public class BandController {
     public ResultData queryBand(BandPageBean bpage){
             return bandService.queryBand(bpage);
     }
+
+    @GetMapping("queryBandAll")
+    public ResultData queryBandAll(){
+            return bandService.queryBandAll();
+    }
+
     @PostMapping("saveBand")
     public ResultData saveBand(Band band){
         return bandService.saveBand(band);

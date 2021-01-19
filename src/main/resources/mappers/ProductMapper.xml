@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.dao.ProductDao">
+    <select id="queryProductData" parameterType="java.lang.Integer" resultType="com.fh.model.po.Attr">
+        select * from shop_attr where typeId=#{typeId} and isDel=0
+    </select>
+
+</mapper>

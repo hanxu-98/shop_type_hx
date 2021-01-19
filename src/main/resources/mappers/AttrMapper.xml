@@ -22,8 +22,8 @@
     </update>
 
     <select id="queryAttrValueData" parameterType="java.lang.Integer" resultType="com.fh.model.po.Attr_Value">
-        select * from  attr_value
-        where attrId=#{attrId}
+        select va.id,va.name,va.nameCH,va.attrId,at.name as attrName from  attr_value va left join shop_attr at on va.attrId = at.id
+        where va.attrId=#{attrId} and va.isDel=0
     </select>
 
 

@@ -3,8 +3,7 @@ package com.fh.controller;
 import com.fh.model.po.Attr;
 import com.fh.model.po.Attr_Value;
 import com.fh.model.vo.AttrPageBean;
-import com.fh.model.vo.Attr_ValuePageBean;
-import com.fh.service.impl.AttrService;
+import com.fh.service.AttrService;
 import com.fh.utils.ResultData;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +16,13 @@ public class AttrController {
 
     @Resource
     private AttrService attrService;
+
+
+
+
     /*属性值维护=================================================================*/
     /*http://localhost:8080/api/attr/queryAttrValue*/
-    @PostMapping("queryAttrValue")
+    @GetMapping("queryAttrValue")
     public ResultData queryAttrValue(Integer attrId){
         return attrService.queryAttrValue(attrId);
     }

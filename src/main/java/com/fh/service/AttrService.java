@@ -1,4 +1,4 @@
-package com.fh.service.impl;
+package com.fh.service;
 
 import com.fh.model.po.Attr;
 import com.fh.model.po.Attr_Value;

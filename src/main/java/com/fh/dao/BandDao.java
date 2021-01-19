@@ -15,4 +15,6 @@ public interface BandDao {
     void updateBand(Band band);
 
     void delBand(Integer id);
+
+    List<Band> queryBandAll();
 }

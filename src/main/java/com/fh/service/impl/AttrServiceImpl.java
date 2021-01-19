@@ -4,8 +4,8 @@ import com.fh.dao.AttrDao;
 import com.fh.model.po.Attr;
 import com.fh.model.po.Attr_Value;
 import com.fh.model.vo.AttrPageBean;
-import com.fh.model.vo.Attr_ValuePageBean;
 import com.fh.model.vo.PageData;
+import com.fh.service.AttrService;
 import com.fh.utils.ResultData;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class AttrServiceImpl implements AttrService{
+public class AttrServiceImpl implements AttrService {
     @Resource
     private AttrDao attrDao;
 

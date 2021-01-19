@@ -51,4 +51,10 @@ public class BandServiceImpl implements BandService {
         bandDao.delBand(id);
         return ResultData.success(null);
     }
+
+    @Override
+    public ResultData queryBandAll() {
+        List<Band> li=bandDao.queryBandAll();
+        return ResultData.success(li);
+    }
 }
