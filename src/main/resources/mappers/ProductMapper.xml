@@ -4,6 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.fh.dao.ProductDao">
+
+    <select id="queryProductCount" parameterType="com.fh.model.vo.ProductPageBean" resultType="java.lang.Long">
+        select count(1) from shop_product where isDel=0
+    </select>
+
+    <select id="queryProduct" parameterType="com.fh.model.vo.ProductPageBean" resultType="com.fh.model.po.Product">
+        select * from shop_product where isDel=0
+
+        limit #{startIndex},#{pageSize}
+    </select>
+
+
     <select id="queryProductData" parameterType="java.lang.Integer" resultType="com.fh.model.po.Attr">
         select * from shop_attr where typeId=#{typeId} and isDel=0
     </select>

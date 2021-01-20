@@ -3,6 +3,8 @@ package com.fh.service.impl;
 import com.fh.dao.ProductDao;
 import com.fh.model.po.Attr;
 import com.fh.model.po.Product;
+import com.fh.model.vo.PageData;
+import com.fh.model.vo.ProductPageBean;
 import com.fh.service.ProductService;
 import com.fh.utils.ResultData;
 import org.springframework.stereotype.Service;
@@ -27,5 +29,16 @@ public class ProductServiceImpl implements ProductService {
 
         productDao.saveProductData(product);
         return ResultData.success(null);
+    }
+
+    @Override
+    public ResultData queryProduct(ProductPageBean pa) {
+        pa.compute();
+        List<Product> li=productDao.queryProduct(pa);
+        Long count=productDao.queryProductCount(pa);
+        PageData pd=new PageData();
+        pd.setTotalPage(count);
+        pd.setData(li);
+        return ResultData.success(pd);
     }
 }
