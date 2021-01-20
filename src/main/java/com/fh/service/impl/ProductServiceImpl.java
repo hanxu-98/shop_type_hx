@@ -2,6 +2,7 @@ package com.fh.service.impl;
 
 import com.fh.dao.ProductDao;
 import com.fh.model.po.Attr;
+import com.fh.model.po.Product;
 import com.fh.service.ProductService;
 import com.fh.utils.ResultData;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,12 @@ public class ProductServiceImpl implements ProductService {
         List<Attr> li=productDao.queryProductData(typeId);
 
         return ResultData.success(li);
+    }
+
+    @Override
+    public ResultData saveProductData(Product product) {
+
+        productDao.saveProductData(product);
+        return ResultData.success(null);
     }
 }
