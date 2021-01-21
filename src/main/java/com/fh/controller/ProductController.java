@@ -17,15 +17,25 @@ public class ProductController {
     private ProductService productService;
 
 
-    @GetMapping("queryProduct")
+    @PostMapping("updateProduct")
+    public ResultData updateProduct(Product product){
+        return productService.updateProduct(product);
+    }
+
+    @GetMapping("echoProduct")
+    public ResultData echoProduct(Integer id){
+        return productService.echoProduct(id);
+    }
+
+    @PostMapping("queryProduct")
     public ResultData queryProduct(ProductPageBean pa){
             return productService.queryProduct(pa);
     }
 
 
     @PostMapping("saveProduct")
-    public ResultData saveProductData(Product product){
-        return productService.saveProductData(product);
+    public ResultData saveProductData(Product product,String attr,String sku){
+        return productService.saveProductData(product,attr,sku);
     }
 
 

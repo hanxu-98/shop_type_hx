@@ -7,7 +7,11 @@ import com.fh.utils.ResultData;
 public interface ProductService {
     ResultData queryProductData(Integer typeId);
 
-    ResultData saveProductData(Product product);
+    ResultData saveProductData(Product product,String attr,String sku);
 
     ResultData queryProduct(ProductPageBean pa);
+
+    ResultData echoProduct(Integer id);
+
+    ResultData updateProduct(Product product);
 }
