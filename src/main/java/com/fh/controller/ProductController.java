@@ -7,6 +7,7 @@ import com.fh.utils.ResultData;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -16,6 +17,23 @@ public class ProductController {
     @Resource
     private ProductService productService;
 
+
+    /*根据分类id 查属性*/
+    @GetMapping("queryProAttrByType")
+    public Map queryProAttrByType(Integer typeId){
+        return productService.queryProAttrByType(typeId);
+    }
+
+
+    @GetMapping("getAttrData")
+    public ResultData getAttrData(Integer proId){
+        return productService.getAttrData(proId);
+
+    }
+    @DeleteMapping("delProduct")
+    public ResultData delProduct(Integer id){
+        return productService.delProduct(id);
+    }
 
     @PostMapping("updateProduct")
     public ResultData updateProduct(Product product){

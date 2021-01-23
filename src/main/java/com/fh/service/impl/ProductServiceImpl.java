@@ -1,10 +1,10 @@
 package com.fh.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.fh.dao.ProductDao;
 import com.fh.model.po.Attr;
+import com.fh.model.po.Attr_Value;
 import com.fh.model.po.Product;
 import com.fh.model.po.ProductAttrDatas;
 import com.fh.model.vo.PageData;
@@ -15,8 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -33,6 +32,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public ResultData saveProductData(Product product,String attr,String sku) {
+        product.setCreateDate(new Date());
+        product.setUpdateDate(new Date());
         productDao.saveProductData(product);
         // 声明属性数据的对象
 
@@ -89,7 +90,51 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ResultData updateProduct(Product product) {
+         product.setUpdateDate(new Date());
         productDao.updateProduct(product);
         return ResultData.success(null);
+    }
+
+    @Override
+    public ResultData delProduct(Integer id) {
+        productDao.delProduct(id);
+
+        return ResultData.success(null);
+    }
+
+    @Override
+    public ResultData getAttrData(Integer proId) {
+        List<ProductAttrDatas> li=productDao.getAttrData(proId);
+        return ResultData.success(li);
+    }
+
+    @Override
+    public Map queryProAttrByType(Integer typeId) {
+        //声明返回数据
+        Map rs=new HashMap();
+        List<Attr> li=productDao.queryProAttrByType(typeId);
+        //声明skuDatas
+        List<Attr> skuDats=new ArrayList<>();
+        //声明attrDatas
+        List<Attr> attrDatas=new ArrayList<>();
+        for (int i = 0; i < li.size(); i++) {
+            if (li.get(i).getIsSKU()!=0){
+                List<Attr_Value> valist=productDao.queryProAttr_ValueByAttr(li.get(i).getId());
+                li.get(i).setValues(valist);
+                skuDats.add(li.get(i));
+            }else {
+                if (li.get(i).getType()!=3){
+                    List<Attr_Value> valist=productDao.queryProAttr_ValueByAttr(li.get(i).getId());
+                    li.get(i).setValues(valist);
+                }
+                attrDatas.add(li.get(i));
+            }
+        }
+
+        //查询sku数据
+        rs.put("skuDatas",skuDats);
+        //非sku数据
+        rs.put("attrDatas",attrDatas);
+        return rs;
     }
 }

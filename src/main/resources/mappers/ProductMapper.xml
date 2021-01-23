@@ -4,6 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.fh.dao.ProductDao">
+    <select id="queryProAttr_ValueByAttr" parameterType="java.lang.Integer" resultType="com.fh.model.po.Attr_Value">
+        select * from attr_value where attrId=#{attrId} and isDel=0
+    </select>
+
+    <select id="queryProAttrByType" parameterType="java.lang.Integer" resultType="com.fh.model.po.Attr">
+        select * from shop_attr where typeId=#{typeId} and isDel=0
+    </select>
 
     <select id="queryProductCount" parameterType="com.fh.model.vo.ProductPageBean" resultType="java.lang.Long">
         select count(1) from shop_product where isDel=0
@@ -11,7 +18,7 @@
 
     <select id="queryProduct" parameterType="com.fh.model.vo.ProductPageBean" resultType="com.fh.model.po.Product">
         select * from shop_product where isDel=0
-
+        order by id desc
         limit #{startIndex},#{pageSize}
     </select>
 

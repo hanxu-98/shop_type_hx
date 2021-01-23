@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class Attr {
 
@@ -21,6 +22,18 @@ public class Attr {
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date updateDate;
     private String author;
+    private List<Attr_Value> values;
+    private Object[] checkedValues=new Object[]{};
+
+
+
+    public List<Attr_Value> getValues() {
+        return values;
+    }
+
+    public void setValues(List<Attr_Value> values) {
+        this.values = values;
+    }
 
     public Integer getId() {
         return id;

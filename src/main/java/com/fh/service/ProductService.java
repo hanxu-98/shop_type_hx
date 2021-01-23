@@ -4,6 +4,8 @@ import com.fh.model.po.Product;
 import com.fh.model.vo.ProductPageBean;
 import com.fh.utils.ResultData;
 
+import java.util.Map;
+
 public interface ProductService {
     ResultData queryProductData(Integer typeId);
 
@@ -14,4 +16,10 @@ public interface ProductService {
     ResultData echoProduct(Integer id);
 
     ResultData updateProduct(Product product);
+
+    ResultData delProduct(Integer id);
+
+    ResultData getAttrData(Integer proId);
+
+    Map queryProAttrByType(Integer typeId);
 }
