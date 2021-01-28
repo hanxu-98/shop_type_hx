@@ -19,7 +19,7 @@ public class LoginController {
     @PostMapping("registerUser")
     public ResultData registerUser(User user){
 
-        return null;
+        return loginService.registerUser(user);
     }
 
     /*验证用户唯一*/

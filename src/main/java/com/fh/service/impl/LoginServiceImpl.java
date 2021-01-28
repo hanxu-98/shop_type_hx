@@ -4,10 +4,12 @@ import com.fh.dao.LoginDao;
 import com.fh.model.po.User;
 import com.fh.service.LoginService;
 import com.fh.utils.CodeUtil;
+import com.fh.utils.MD5Util;
 import com.fh.utils.ResultData;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,5 +28,14 @@ public class LoginServiceImpl implements LoginService {
         }
         map.put("code",CodeUtil.SUCCESS_CODE);
         return map;
+    }
+
+    @Override
+    public ResultData registerUser(User user) {
+        user.setCreateDate(new Date());
+        user.setUpdateDate(new Date());
+        user.setPassword(MD5Util.MD5Encode(user.getPassword()));
+        loginDao.registerUser(user);
+        return ResultData.success(null);
     }
 }
