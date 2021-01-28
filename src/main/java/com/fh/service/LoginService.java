@@ -10,4 +10,6 @@ public interface LoginService {
     Map valUserName(String name);
 
     ResultData registerUser(User user);
+
+    Map loginUser(User user);
 }

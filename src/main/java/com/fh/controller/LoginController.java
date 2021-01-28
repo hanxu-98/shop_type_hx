@@ -16,6 +16,12 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
+
+    @PostMapping("loginUser")
+    public Map loginUser(User user){
+        return loginService.loginUser(user);
+    }
+
     @PostMapping("registerUser")
     public ResultData registerUser(User user){
 

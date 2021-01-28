@@ -38,4 +38,18 @@ public class LoginServiceImpl implements LoginService {
         loginDao.registerUser(user);
         return ResultData.success(null);
     }
+
+    @Override
+    public Map loginUser(User user) {
+        Map map=new HashMap();
+        List<User> list = loginDao.valUserName(user.getName());
+        User u = list.get(0);
+        String s = MD5Util.MD5Encode(user.getPassword());
+        if (!u.getPassword().equals(s)){
+            map.put("code",CodeUtil.PWD_ERROR_CODE);
+            return map;
+        }
+        map.put("code",CodeUtil.SUCCESS_CODE);
+        return map;
+    }
 }
