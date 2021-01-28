@@ -23,9 +23,15 @@ public class Attr {
     private Date updateDate;
     private String author;
     private List<Attr_Value> values;
-    private Object[] checkedValues=new Object[]{};
+    private Object checkedValues;
 
+    public Object getCheckedValues() {
+        return checkedValues;
+    }
 
+    public void setCheckedValues(Object checkedValues) {
+        this.checkedValues = checkedValues;
+    }
 
     public List<Attr_Value> getValues() {
         return values;

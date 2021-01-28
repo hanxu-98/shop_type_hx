@@ -121,12 +121,19 @@ public class ProductServiceImpl implements ProductService {
             if (li.get(i).getIsSKU()!=0){
                 List<Attr_Value> valist=productDao.queryProAttr_ValueByAttr(li.get(i).getId());
                 li.get(i).setValues(valist);
+                if (li.get(i).getType()==2){
+                    li.get(i).setCheckedValues(new Object[]{});
+                }
                 skuDats.add(li.get(i));
             }else {
                 if (li.get(i).getType()!=3){
                     List<Attr_Value> valist=productDao.queryProAttr_ValueByAttr(li.get(i).getId());
                     li.get(i).setValues(valist);
+                    if (li.get(i).getType() == 2) {
+                        li.get(i).setCheckedValues(new Object[]{});
+                    }
                 }
+
                 attrDatas.add(li.get(i));
             }
         }
@@ -134,7 +141,7 @@ public class ProductServiceImpl implements ProductService {
         //查询sku数据
         rs.put("skuDatas",skuDats);
         //非sku数据
-        rs.put("attrDatas",attrDatas);
+        rs.put("spuDatas",attrDatas);
         return rs;
     }
 }
