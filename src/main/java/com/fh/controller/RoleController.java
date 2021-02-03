@@ -1,5 +1,6 @@
 package com.fh.controller;
 
+import com.fh.model.po.Role;
 import com.fh.service.RoleService;
 import com.fh.utils.PageBean;
 import com.fh.utils.ResultData;
@@ -17,6 +18,11 @@ public class RoleController {
 
     @Resource
     private RoleService roleService;
+
+    @PostMapping("saveRoleData")
+    public ResultData saveRoleData(Role role){
+        return roleService.saveRoleData(role);
+    }
 
     @PostMapping("queryData")
     public ResultData queryData(PageBean pa){

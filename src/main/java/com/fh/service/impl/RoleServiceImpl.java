@@ -9,6 +9,7 @@ import com.fh.utils.ResultData;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,5 +26,17 @@ public class RoleServiceImpl implements RoleService {
         p.setData(li);
         p.setTotalPage(count);
         return ResultData.success(p);
+    }
+
+    @Override
+    public ResultData saveRoleData(Role role) {
+        if (role.getId()!=null){
+            roleDao.updateRole(role);
+        }else {
+            role.setCreateDate(new Date());
+            roleDao.saveRole(role);
+        }
+
+        return ResultData.success(null);
     }
 }
