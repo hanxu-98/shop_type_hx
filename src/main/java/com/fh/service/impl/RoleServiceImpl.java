@@ -39,4 +39,10 @@ public class RoleServiceImpl implements RoleService {
 
         return ResultData.success(null);
     }
+
+    @Override
+    public ResultData delRole(Integer id) {
+        roleDao.delRole(id);
+        return ResultData.success(null);
+    }
 }

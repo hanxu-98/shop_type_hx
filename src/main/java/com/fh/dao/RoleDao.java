@@ -2,10 +2,7 @@ package com.fh.dao;
 
 import com.fh.model.po.Role;
 import com.fh.utils.PageBean;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -19,4 +16,6 @@ public interface RoleDao {
     void updateRole(Role role);
     @Insert("insert into shop_role (name,isDel,createDate,author) values (#{name},0,#{createDate},#{author}) ")
     void saveRole(Role role);
+    @Update("update shop_role set isDel=1 where id=#{id}")
+    void delRole(Integer id);
 }
