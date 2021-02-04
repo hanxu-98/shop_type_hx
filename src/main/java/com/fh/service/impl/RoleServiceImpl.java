@@ -9,8 +9,7 @@ import com.fh.utils.ResultData;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -44,5 +43,32 @@ public class RoleServiceImpl implements RoleService {
     public ResultData delRole(Integer id) {
         roleDao.delRole(id);
         return ResultData.success(null);
+    }
+
+    @Override
+    public ResultData saveRoleMenu(Integer rid,String mids) {
+        List rmli=new ArrayList();
+        String[] midarr = mids.split(",");
+        List<Integer> midarray=new ArrayList<>();
+        for (int i = 0; i < midarr.length; i++) {
+            midarray.add(Integer.parseInt(midarr[i]));
+        }
+        for (int i = 0; i < midarray.size(); i++) {
+            Map m=new HashMap<>();
+            m.put("rid",rid);
+            m.put("mid",midarray.get(i));
+
+            rmli.add(m);
+        }
+        roleDao.delRoleMenu(rid);
+        roleDao.saveRoleMenu(rmli);
+
+        return ResultData.success(null);
+    }
+
+    @Override
+    public ResultData echoRoleMenu(Integer rid) {
+        List<Integer> li=roleDao.echoRoleMenu(rid);
+        return ResultData.success(li);
     }
 }

@@ -7,6 +7,7 @@ import com.fh.utils.ResultData;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -15,6 +16,16 @@ public class RoleController {
 
     @Resource
     private RoleService roleService;
+
+    @GetMapping("echoRoleMenu")
+    public ResultData echoRoleMenu(Integer rid){
+      return roleService.echoRoleMenu(rid);
+    }
+    @PostMapping("saveRoleMenu")
+    public ResultData saveRoleMenu(Integer rid,String mids){
+        return roleService.saveRoleMenu(rid,mids);
+    }
+
 
     @DeleteMapping("delRole")
     public ResultData delRole(Integer id){

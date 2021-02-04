@@ -18,4 +18,10 @@ public interface RoleDao {
     void saveRole(Role role);
     @Update("update shop_role set isDel=1 where id=#{id}")
     void delRole(Integer id);
+
+    void delRoleMenu(Integer rid);
+
+    void saveRoleMenu(@Param("rmli") List<Object> rmli);
+    @Select("select mid from role_menu where rid=#{rid}")
+    List<Integer> echoRoleMenu(Integer rid);
 }
