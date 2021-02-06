@@ -24,4 +24,6 @@ public interface RoleDao {
     void saveRoleMenu(@Param("rmli") List<Object> rmli);
     @Select("select mid from role_menu where rid=#{rid}")
     List<Integer> echoRoleMenu(Integer rid);
+    @Select("select * from shop_role where isDel=0")
+    List<Role> queryRoleAll();
 }

@@ -17,6 +17,11 @@ public class RoleController {
     @Resource
     private RoleService roleService;
 
+    @GetMapping("queryRoleAll")
+    public ResultData queryRoleAll(){
+        return roleService.queryRoleAll();
+    }
+
     @GetMapping("echoRoleMenu")
     public ResultData echoRoleMenu(Integer rid){
       return roleService.echoRoleMenu(rid);

@@ -71,4 +71,11 @@ public class RoleServiceImpl implements RoleService {
         List<Integer> li=roleDao.echoRoleMenu(rid);
         return ResultData.success(li);
     }
+
+    @Override
+    public ResultData queryRoleAll() {
+        List<Role> li=roleDao.queryRoleAll();
+
+        return ResultData.success(li);
+    }
 }

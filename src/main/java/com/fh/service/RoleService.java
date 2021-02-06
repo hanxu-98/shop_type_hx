@@ -16,4 +16,6 @@ public interface RoleService {
     ResultData saveRoleMenu(Integer rid,String mids);
 
     ResultData echoRoleMenu(Integer rid);
+
+    ResultData queryRoleAll();
 }
