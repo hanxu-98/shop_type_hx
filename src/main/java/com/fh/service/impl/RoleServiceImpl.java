@@ -7,6 +7,7 @@ import com.fh.service.RoleService;
 import com.fh.utils.PageBean;
 import com.fh.utils.ResultData;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -46,6 +47,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public ResultData saveRoleMenu(Integer rid,String mids) {
         List rmli=new ArrayList();
         String[] midarr = mids.split(",");
